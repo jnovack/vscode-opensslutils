@@ -9,6 +9,9 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.convertPemToCrt', converters.convertPemToCrt));
 	context.subscriptions.push(preview.disposable);
 	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.showOpenSSLPreview', preview.command));
+	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.refreshInlineOpenSSLPreview', preview.refreshInlineCommand));
+	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.expandInlineOpenSSLPreview', preview.expandInlineCommand));
+	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.openInlineOpenSSLPreview', preview.openInlineCommand));
 	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.generatePrivKey', generators.generatePrivKey));
 	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.generateKeyCsr', generators.getKeyCsrGenerator(context.extensionPath)));
 	context.subscriptions.push(vscode.commands.registerCommand('opensslutils.generateSelfSignedCert', generators.getSelfSignedCertGenerator(context.extensionPath)));
