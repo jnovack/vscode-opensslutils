@@ -76,7 +76,7 @@ function genPrivKey(size: number, algo: string): Promise<any> {
     });
 }
 
-function genP12(data: any): Promise<any> {
+function genP12(data: any): Promise<void> {
     data.p12 = sanitizePath(data.p12);
     data.key = sanitizePath(data.key);
     data.cert = sanitizePath(data.cert);
@@ -87,7 +87,7 @@ function genP12(data: any): Promise<any> {
     if (data.alias) {
         cmd += ` -name "${data.alias}"`;
     }
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
         exec(cmd, (err, stdout, stderr) => {
             if (err) {
                 reject(err);
