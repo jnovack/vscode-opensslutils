@@ -16,7 +16,7 @@ For Windows users: in order to use OpenSSL through Windows Subsystem for Linux (
 ![Generate Key and Csr](images/privkey.gif)
 
 
-### Generate RSA Private Key and Certificate Signing Request 
+### Generate RSA Private Key and Certificate Signing Request
 
 
 ![Generate Key and Csr](images/keycsr.gif)
@@ -71,6 +71,7 @@ At the time of writing this README there are no known issues.
 
 * Omar de Mingo
 * Fabrizio Balsamo
+* Justin J. Novack (@jnovack)
 
 ## License
 

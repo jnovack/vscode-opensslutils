@@ -28,6 +28,7 @@
     },
     "homepage": "https://github.com/ffaraone/vscode-opensslutils/blob/master/README.md",
     "activationEvents": [
+        "onStartupFinished",
         "onCommand:opensslutils.showOpenSSLPreview",
         "onCommand:opensslutils.convertCrtToPem",
         "onCommand:opensslutils.convertPemToCrt",
@@ -44,19 +45,42 @@
                 "title": "OpenSSL Utils configuration",
                 "properties": {
                     "opensslutils.opensslPath": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
+                        "type": "string",
                         "default": null,
                         "description": "Full path to the openssl executable"
                     },
                     "opensslutils.useWsl": {
-                        "type": [
-                            "boolean"
-                        ],
+                        "type": "boolean",
                         "default": false,
                         "description": "Use OpenSSL via Windows Subsystem for Linux"
+                    },
+                    "opensslutils.preview.codeLensEnabled": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Show automatic OpenSSL CodeLens previews above certificate and CSR blocks."
+                    },
+                    "opensslutils.preview.maxCertificates": {
+                        "type": "number",
+                        "default": 5,
+                        "minimum": 1,
+                        "description": "Maximum number of certificate or CSR blocks to render inline before showing expand actions."
+                    },
+                    "opensslutils.preview.autoLoadInline": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Automatically load inline previews for visible certificate or CSR blocks when the file is small enough."
+                    },
+                    "opensslutils.preview.maxAutoLoadCertificates": {
+                        "type": "number",
+                        "default": 3,
+                        "minimum": 1,
+                        "description": "Maximum number of visible certificate or CSR blocks to auto-load inline."
+                    },
+                    "opensslutils.preview.maxAutoLoadBytes": {
+                        "type": "number",
+                        "default": 131072,
+                        "minimum": 1,
+                        "description": "Maximum document size in bytes for automatic inline preview loading."
                     }
                 }
             }
@@ -129,10 +153,11 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "tslint": "^5.8.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "@types/vscode": "^1.23.0",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6"
     }
 }
